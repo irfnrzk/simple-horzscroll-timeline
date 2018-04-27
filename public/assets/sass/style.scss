@@ -1,0 +1,317 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
+
+$lightblue: #2c8fde;
+$darkblue: #051432;
+$navyblue: #344c7c;
+
+@import '../bower_libs/font-awesome/web-fonts-with-css/scss/fontawesome';
+@import '../bower_libs/bourbon/core/bourbon';
+@include font-face('FontAwesome','../assets/bower_libs/font-awesome/web-fonts-with-css/webfonts/fa-regular-400');
+// .parent{
+// 	width:100%; 
+// 	border:5px solid red; 
+// 	overflow:hidden; 
+// 	left:20px
+// }
+
+// .child-container{
+// 	width:1000%;
+// 	left:-710px;
+// 	position:relative;
+// }
+
+// #child{ 
+// 	width:1000%; 
+// 	//float:left; 
+// 	//font-size:15px; 
+// 	//font-family:arial; 
+// 	//padding:10px 5px 10px 0;
+// 	//left:720px; 
+// 	//border-right:4px solid red
+// }
+
+// //.clear {clear:both;}
+
+.dragscroll{
+	//border: 1px solid black;
+	width: 100%;
+	white-space: nowrap;
+	overflow: scroll;
+	//overflow: hidden;
+	@media (min-width: 992px){
+		overflow: hidden;
+	}
+}
+
+// .drag{
+//   overflow-x: hidden;
+//   overflow-y: hidden;
+//   width: 100%;
+//   //margin:60px;
+//   // -webkit-touch-callout: none;
+//   // -webkit-user-select: none;  
+//   // -moz-user-select: none;   
+//   // -ms-user-select: none;     
+//   user-select: none; 
+
+// }
+
+
+.c-timeline {
+  //float: left;
+  height: 600px;
+  position: relative;
+  //white-space: normal;
+  //width: 1000%;
+  //border: 1px dotted black;
+
+  .c-timeline__container:first-child{
+	.c-timeline__container__subscript{
+	  	&:before{
+	  		content: '';
+	        display: block;
+	        position: absolute;
+	        width: 100%;
+	        top: -1px;
+	        left: 0px;
+	        border: 1px solid white;
+	  	}		
+	}
+  }
+
+  .c-timeline__container:last-child{
+  	.c-timeline__container__subscript{
+	  	&:before{
+	  		content: '';
+	        display: block;
+	        position: absolute;
+	        width: 100%;
+	        top: -1px;
+	        left: 100%;
+	        border: 1px solid white;
+	  	}		
+	}
+  }
+
+
+}
+.c-timeline__event {
+  //background-color: beige;
+  //display: table-row;
+}
+.c-timeline__event__connector {
+  content: "";
+  display: table-row;
+  height: 10%;
+  // &:before{
+  // 	content: '\f192';
+  // 	font-family: 'FontAwesome';
+  // 	position: absolute;
+  // 	left: 50%;
+  // 	transform: translate(-50%);
+  // 	background: white;
+  // }
+  &:after{
+	  // border-right: 2px solid #051432;
+	  // box-sizing: border-box;
+	  // content: "";
+	  // display: block;
+	  // float: left;
+	  // height: 100%;
+	  // left: 50%;
+	  // width: 50%;
+	border-right: 2px solid #051432;
+    box-sizing: border-box;
+    content: "";
+    display: block;
+    float: left;
+    height: 30px;
+    left: 1px;
+    width: 50%;
+    bottom: 0;
+    position: absolute;
+  }
+}
+.c-timeline__container {
+  //float: left;
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  width: 350px;
+  white-space: normal;
+  &:not(:first-child){
+  	margin-left: -4px;
+  }
+
+  &.year{
+  	//border: 1px solid black;
+	.c-timeline__container__subscript {
+	  //border-bottom: 1px solid red;
+	  //height: 60%;
+	  height: 12.2%;
+	  bottom: 288px;
+	  	// &:before{
+	  	// 	content: '';
+	   //      display: block;
+	   //      position: absolute;
+	   //      width: 100%;
+	   //      top: -1px;
+	   //      left: 0px;
+	   //      border: 1px solid white;
+	  	// }
+	  	&:after{
+	  		content: '\f192';
+  			font-family: 'FontAwesome';
+  			background: white;
+  			padding: 5px;
+  			font-size: 20px;
+  			color: $lightblue;
+  			top: -15px;
+	  	}
+	}
+
+	.c-timeline__event{
+		bottom: 20px;
+    }
+  	.c-timeline__container__event__timestamp{
+		background: white;
+		color: $lightblue;
+		text-align: center;
+	}
+  }
+}
+
+.c-timeline__container__sealevel,
+.c-timeline__container__superscript,
+.c-timeline__container__subscript {
+  display: table;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  width: 375px;
+  &:before{
+  	content: '\f111';
+  	font-family: 'FontAwesome';
+  	//border: 1px solid blue;
+  	position: absolute;
+  	background: white;
+  	color: white;
+  	bottom: -10px;
+  	left: 50%;
+  	transform: translate(-50%);
+  	font-size: 23px;
+  	z-index: 1;
+  }
+  &:after{
+  	content: '\f111';
+  	font-family: 'FontAwesome';
+  	position: absolute;
+  	left: 50%;
+  	transform: translate(-50%);
+  	background: $darkblue;
+  	border-radius: 50%;
+  	font-size: 10px;
+  	bottom: -5px;
+  	z-index: 2;
+  }
+
+  .c-timeline__event{
+    //margin-bottom: 8px;
+    position: absolute;
+    bottom: 40px;
+    width: 300px;
+    left: 50%;
+    transform: translate(-50%);
+   }
+}
+
+.c-timeline__container__subscript{
+  &:before{
+  	bottom: calc(100% - 12px);
+  }
+  &:after{
+  	top: -5px;
+  	bottom: calc(100% - 5px);
+  }
+
+  .c-timeline__event__connector {
+    &:after{
+      top: 0;
+    }
+  }
+
+  .c-timeline__event{	
+    top: 40px;
+   }
+}
+
+
+
+.c-timeline__container__sealevel .c_timeline__event,
+.c-timeline__container__superscript .c_timeline__event,
+.c-timeline__container__subscript .c_timeline__event {
+  display: table-row;
+}
+.c-timeline__container__sealevel {
+  border-bottom: 1px solid $lightblue;
+  height: 40%;
+}
+.c-timeline__container__sealevel .c-timeline__event__connector:first-child,
+.c-timeline__container__superscript .c-timeline__event__connector:first-child {
+  display: none;
+}
+.c-timeline__container__sealevel {
+  //padding-top: 120px;
+}
+.c-timeline__container__subscript {
+  border-bottom: 0;
+  border-top: 1px solid $lightblue;
+  bottom: 48px;
+  height: 52.2%;
+  position: absolute;
+}
+.c-timeline__container__subscript .c-timeline__event__connector:last-child {
+  display: none;
+}
+
+.c-timeline__container__event__timestamp{
+	background: $darkblue;
+	margin: 0;
+	padding: 15px 30px;
+	color: white;
+}
+
+.c-timeline__container__event__article{
+	margin: 0;
+	background: $navyblue;
+	color: white;
+	padding: 15px 30px;
+	margin-top: 1px;
+	p{
+		margin: 0;
+	}
+}
+
+.dropdown-filter-js{
+	max-width: 270px;
+	border: 1px solid grey;
+	padding: 5px 15px;
+	color: black;
+	position: relative;
+	//float: right;
+
+	&:after{
+		font-family: 'FontAwesome';
+		content: '\f107';
+		position: absolute;
+		right: 15px;
+	}
+}
